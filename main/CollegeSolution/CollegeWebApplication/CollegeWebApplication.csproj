@@ -183,6 +183,16 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CollegeBusinessInterfaces\CollegeBusinessInterfaces.csproj">
+      <Project>{63dbbcf8-1fc9-4e21-8e58-9bfd5eba0efb}</Project>
+      <Name>CollegeBusinessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CollegeBusinessObjects\CollegeBusinessObjects.csproj">
+      <Project>{ad661cde-8f91-4176-9272-6ff0954f08d9}</Project>
+      <Name>CollegeBusinessObjects</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
