@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CollegeBusinessInterfaces;
+using CollegeBusinessObjects.Exceptions;
 
 namespace CollegeBusinessObjects
 {
@@ -24,8 +25,13 @@ namespace CollegeBusinessObjects
 
                 if (collegeCourse.PrerequisteCourseName != null)
                 {
-                    collegeCourse.Prerequisite =
-                        Courses.SingleOrDefault(c => c.Name == collegeCourse.PrerequisteCourseName);
+                    var prerequisite = Courses.SingleOrDefault(c => c.Name == collegeCourse.PrerequisteCourseName);
+                    if (prerequisite == null)
+                    {
+                        throw new CourseNotFoundException(collegeCourse.PrerequisteCourseName);
+                    }
+
+                    collegeCourse.Prerequisite = prerequisite;
                 }
 
                 Courses.Add(collegeCourse);
