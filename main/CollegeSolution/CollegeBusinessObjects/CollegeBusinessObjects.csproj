@@ -43,6 +43,7 @@
     <Compile Include="College.cs" />
     <Compile Include="CollegeCourse.cs" />
     <Compile Include="Exceptions\CourseNotFoundException.cs" />
+    <Compile Include="Exceptions\InvalidCourseNameException.cs" />
     <Compile Include="Exceptions\InvalidPrerequisiteException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,8 +8,8 @@ namespace CollegeBusinessInterfaces
 {
     public interface ICollegeCourse
     {
-        string Name { get; set; }
-        string PrerequisteCourseName { get; set; }
+        string Name { get; }
+        string PrerequisteCourseName { get; }
         ICollegeCourse Prerequisite { get; set; }
     }
 }

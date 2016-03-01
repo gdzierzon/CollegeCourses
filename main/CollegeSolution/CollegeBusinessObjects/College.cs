@@ -22,7 +22,7 @@ namespace CollegeBusinessObjects
 
         public override string ToString()
         {
-            return string.Join(", ", Courses);
+            return "";//string.Join(", ", Courses);
         }
     }
 }
