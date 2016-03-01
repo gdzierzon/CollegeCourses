@@ -7,7 +7,7 @@ using CollegeBusinessInterfaces;
 
 namespace CollegeBusinessObjects.Exceptions
 {
-    class InvalidPrerequisiteException: Exception
+    public class CircularPrerequisiteReferenceException: Exception
     {
 
         public override string Message
@@ -25,7 +25,7 @@ namespace CollegeBusinessObjects.Exceptions
 
         public ICollegeCourse Course { get; set; }
 
-        public InvalidPrerequisiteException(ICollegeCourse course)
+        public CircularPrerequisiteReferenceException(ICollegeCourse course)
         {
             Course = course;
         }

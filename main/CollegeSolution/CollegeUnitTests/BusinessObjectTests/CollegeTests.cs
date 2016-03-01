@@ -62,7 +62,7 @@ namespace CollegeUnitTests.BusinessObjectTests
         }
 
         [Test]
-        public void TestAddCoursesWithInvalidPrerequisite()
+        public void TestAddCoursesWithInvalidPrerequisiteName()
         {
 
             //arrange
@@ -72,12 +72,11 @@ namespace CollegeUnitTests.BusinessObjectTests
             //act
             //assert
             Assert.Throws<CourseNotFoundException>(() => { college.AddCourses(courseList); });
-            
+
         }
 
-
         [Test]
-        public void TestAddCoursesWithValidPrerequisite()
+        public void TestAddCoursesWithValidPrerequisiteName()
         {
 
             //arrange
@@ -93,8 +92,22 @@ namespace CollegeUnitTests.BusinessObjectTests
 
             //assert
             Assert.AreEqual(course1, course2?.Prerequisite);
+        }
 
+        [Test]
+        public void TestAddCoursesWithCircularReference()
+        {
 
+            //arrange
+            var college = new College();
+            var courseName1 = "Intro to Fire";
+            var courseName2 = "Advanced Pyrotechnics";
+            string[] courseList = { $"{courseName1}: {courseName2}", $"{courseName2}: {courseName1}" };
+
+            //act
+            //assert
+            Assert.Throws<CircularPrerequisiteReferenceException>(() => { college.AddCourses(courseList); });
+            
         }
     }
 }
