@@ -22,7 +22,17 @@ namespace CollegeBusinessObjects
             foreach (var course in courses)
             {
                 var collegeCourse = new CollegeCourse(course);
+                
+                Courses.Add(collegeCourse);
+            }
 
+            MapCoursePrerequisites();
+        }
+
+        private void MapCoursePrerequisites()
+        {
+            foreach (var collegeCourse in Courses)
+            {
                 if (collegeCourse.PrerequisteCourseName != null)
                 {
                     var prerequisite = Courses.SingleOrDefault(c => c.Name == collegeCourse.PrerequisteCourseName);
@@ -33,11 +43,9 @@ namespace CollegeBusinessObjects
 
                     collegeCourse.Prerequisite = prerequisite;
                 }
-
-                Courses.Add(collegeCourse);
             }
-            
         }
+
         public void Validate()
         {
             throw new NotImplementedException();
