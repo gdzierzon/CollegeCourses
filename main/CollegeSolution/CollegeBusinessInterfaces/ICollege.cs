@@ -8,7 +8,7 @@ namespace CollegeBusinessInterfaces
 {
     public interface ICollege
     {
-        List<ICollegeCourse> Courses { get; set; }
+        List<ICollegeCourse> Courses { get; }
         void AddCourses(string[] courses);
         void Validate();
     }

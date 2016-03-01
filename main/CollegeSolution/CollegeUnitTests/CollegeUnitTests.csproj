@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="AcceptanceTests\AddCoursesSteps.cs" />
     <Compile Include="BusinessObjectTests\CollegeCourseTests.cs" />
+    <Compile Include="BusinessObjectTests\CollegeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

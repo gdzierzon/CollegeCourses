@@ -9,7 +9,7 @@ namespace CollegeBusinessObjects
 {
     public class College: ICollege
     {
-        public List<ICollegeCourse> Courses { get; set; }
+        public List<ICollegeCourse> Courses { get; private set; }
 
         public void AddCourses(string[] courses)
         {

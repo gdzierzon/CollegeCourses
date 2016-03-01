@@ -18,6 +18,7 @@ namespace CollegeUnitTests.BusinessObjectTests
         {
             //arrange
             var courseName = "Advanced Pyrotechnics";
+
             //act
             var collegeCourse = new CollegeCourse(courseName);
 
@@ -30,11 +31,11 @@ namespace CollegeUnitTests.BusinessObjectTests
         {
             //arrange
             var courseName = "   ";
-            //act
             ICollegeCourse collegeCourse;
 
+            //act
             //assert
-            Assert.Throws(typeof(InvalidCourseNameException),
+            Assert.Throws<InvalidCourseNameException>(
                 () => { collegeCourse = new CollegeCourse(courseName); }
                 );
         }
@@ -47,6 +48,7 @@ namespace CollegeUnitTests.BusinessObjectTests
             var inputCourseName = "Advanced Pyrotechnics: Introduction to Fire";
             var courseName = "Advanced Pyrotechnics";
             var prerequisiteCourseName = "Introduction to Fire";
+
             //act
             var collegeCourse = new CollegeCourse(inputCourseName);
 
@@ -62,6 +64,7 @@ namespace CollegeUnitTests.BusinessObjectTests
             //arrange
             var inputCourseName = "Advanced Pyrotechnics:    ";
             var courseName = "Advanced Pyrotechnics";
+
             //act
             var collegeCourse = new CollegeCourse(inputCourseName);
 
