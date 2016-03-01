@@ -10,18 +10,7 @@ namespace CollegeBusinessObjects.Exceptions
     public class CircularPrerequisiteReferenceException: Exception
     {
 
-        public override string Message
-        {
-            get
-            {
-                if (Course.Prerequisite != null)
-                {
-                    return $"{Course} has an invalid prerequisite course: ({Course.Prerequisite}).";
-                }
-
-                return $"'{Course}' has an invalid prerequisite course.";
-            }
-        }
+        public override string Message => $"'{Course}' has a prerequisite course with a cirular reference.";
 
         public ICollegeCourse Course { get; set; }
 

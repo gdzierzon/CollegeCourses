@@ -11,10 +11,17 @@ namespace CollegeBusinessObjects
     public class College: ICollege
     {
         public List<ICollegeCourse> Courses { get; private set; }
+        private List<ICollegeCourse> PrerequisitesCourseList { get; set; }
+
+        public string Schedule
+        {
+            get { return ""; }
+        }
 
         public College()
         {
             Courses = new List<ICollegeCourse>();
+            PrerequisitesCourseList = new List<ICollegeCourse>();
         }
 
         public void AddCourses(string[] courses)
@@ -27,6 +34,7 @@ namespace CollegeBusinessObjects
             }
 
             MapCoursePrerequisites();
+            ValidateCourses();
         }
 
         private void MapCoursePrerequisites()
@@ -46,14 +54,29 @@ namespace CollegeBusinessObjects
             }
         }
 
-        public void Validate()
+        private void ValidateCourses()
         {
-            throw new NotImplementedException();
+            foreach (var course in Courses)
+            {
+                CheckForPrerequisiteCourse(course);
+            }
         }
 
-        public override string ToString()
+        private void CheckForPrerequisiteCourse(ICollegeCourse course)
         {
-            return "";//string.Join(", ", Courses);
+            if (course.HasPrerequisite)
+            {
+                var exists = PrerequisitesCourseList.Exists(c => c == course.Prerequisite);
+                if (exists)
+                {
+                    throw new CircularPrerequisiteReferenceException(course);
+                }
+
+                PrerequisitesCourseList.Add(course);
+                CheckForPrerequisiteCourse(course.Prerequisite);
+            }
         }
+
+       
     }
 }

@@ -11,5 +11,6 @@ namespace CollegeBusinessInterfaces
         string Name { get; }
         string PrerequisteCourseName { get; }
         ICollegeCourse Prerequisite { get; set; }
+        bool HasPrerequisite { get; }
     }
 }

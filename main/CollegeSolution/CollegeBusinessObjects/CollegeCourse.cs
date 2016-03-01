@@ -13,6 +13,7 @@ namespace CollegeBusinessObjects
         public string Name { get; private set; }
         public string PrerequisteCourseName { get; private set; }
         public ICollegeCourse Prerequisite { get; set; }
+        public bool HasPrerequisite => Prerequisite != null;
 
         public CollegeCourse(string course)
         {
