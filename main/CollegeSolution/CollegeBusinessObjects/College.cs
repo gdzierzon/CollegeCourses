@@ -11,9 +11,18 @@ namespace CollegeBusinessObjects
     {
         public List<ICollegeCourse> Courses { get; private set; }
 
+        public College()
+        {
+            Courses = new List<ICollegeCourse>();
+        }
+
         public void AddCourses(string[] courses)
         {
-            
+            foreach (var course in courses)
+            {
+                var collegeCourse = new CollegeCourse(course);
+                Courses.Add(collegeCourse);
+            }
         }
         public void Validate()
         {

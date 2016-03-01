@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CollegeBusinessObjects;
+using CollegeBusinessObjects.Exceptions;
 using NUnit.Framework;
 
 namespace CollegeUnitTests.BusinessObjectTests
@@ -23,6 +24,20 @@ namespace CollegeUnitTests.BusinessObjectTests
 
             //assert
             Assert.AreEqual(courseList.Length, college.Courses.Count);
+        }
+
+        [Test]
+        public void TestAddCoursesWithInvalidName()
+        {
+
+            //arrange
+            var college = new College();
+            string[] courseList = {"Intro to Fire", "  "};
+
+            //act
+            //assert
+            Assert.Throws<InvalidCourseNameException>(() => { college.AddCourses(courseList);});
+            
         }
     }
 }
