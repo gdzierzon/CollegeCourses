@@ -12,16 +12,41 @@ namespace CollegeBusinessObjects
     {
         public List<ICollegeCourse> Courses { get; private set; }
         private List<ICollegeCourse> PrerequisitesCourseList { get; set; }
+        private List<ICollegeCourse> OrderedCourses { get; set; } 
 
         public string Schedule
         {
-            get { return ""; }
+            get
+            {
+                OrderedCourses.Clear();
+                var coursesToAdd = Courses.Where(c => !c.HasPrerequisite).OrderBy(c=>c.Name).ToList();
+                SortCourses(coursesToAdd);
+
+                return string.Join(", ", OrderedCourses); 
+                
+            }
         }
+
+        private void SortCourses(List<ICollegeCourse> coursesToAdd)
+        {
+            foreach (var course in coursesToAdd)
+            {
+                if (!OrderedCourses.Exists(c => c.Name == course.Name))
+                {
+                    OrderedCourses.Add(course);
+                }
+
+                var dependentCourses = Courses.Where(c => c.Prerequisite == course).ToList();
+                SortCourses(dependentCourses);
+            }
+        }
+
 
         public College()
         {
             Courses = new List<ICollegeCourse>();
             PrerequisitesCourseList = new List<ICollegeCourse>();
+            OrderedCourses = new List<ICollegeCourse>();
         }
 
         public void AddCourses(string[] courses)

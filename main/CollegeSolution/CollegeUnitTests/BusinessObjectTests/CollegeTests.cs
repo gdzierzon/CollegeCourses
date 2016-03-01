@@ -109,5 +109,65 @@ namespace CollegeUnitTests.BusinessObjectTests
             Assert.Throws<CircularPrerequisiteReferenceException>(() => { college.AddCourses(courseList); });
             
         }
+
+        [Test]
+        public void TestDisplayScheduleCoursesAddedInOrder()
+        {
+
+            //arrange
+            var college = new College();
+            var courseName1 = "Intro to Fire";
+            var courseName2 = "Advanced Pyrotechnics";
+            string[] courseList = { courseName1, $"{courseName2}: {courseName1}" };
+
+            var expectedSchedule = $"{courseName1}, {courseName2}";
+
+            //act
+            college.AddCourses(courseList);
+
+            //assert
+            Assert.AreEqual(expectedSchedule, college.Schedule);
+        }
+
+        [Test]
+        public void TestDisplayScheduleCoursesAddedOutOfOrder()
+        {
+
+            //arrange
+            var college = new College();
+            var courseName1 = "Intro to Fire";
+            var courseName2 = "Advanced Pyrotechnics";
+            string[] courseList = { $"{courseName2}: {courseName1}", courseName1 };
+
+            var expectedSchedule = $"{courseName1}, {courseName2}";
+
+            //act
+            college.AddCourses(courseList);
+
+            //assert
+            Assert.AreEqual(expectedSchedule, college.Schedule);
+        }
+
+
+        [Test]
+        public void TestDisplayScheduleWithMultipleCourses()
+        {
+
+            //arrange
+            var college = new College();
+            var courseName1 = "Introduction to Paper Airplanes";
+            var courseName2 = "Advanced Throwing Techniques";
+            var courseName3 = "Intro to Fire";
+            var courseName4 = "Advanced Pyrotechnics";
+            string[] courseList = { $"{courseName2}: {courseName1}", courseName1, $"{courseName4}: {courseName3}", courseName3 };
+
+            var expectedSchedule = $"{courseName3}, {courseName4}, {courseName1}, {courseName2}";
+
+            //act
+            college.AddCourses(courseList);
+
+            //assert
+            Assert.AreEqual(expectedSchedule, college.Schedule);
+        }
     }
 }
