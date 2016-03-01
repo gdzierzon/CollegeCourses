@@ -39,5 +39,27 @@ namespace CollegeUnitTests.BusinessObjectTests
             Assert.Throws<InvalidCourseNameException>(() => { college.AddCourses(courseList);});
             
         }
+
+
+        [Test]
+        public void TestAddCoursesWithValidPrerequisite()
+        {
+
+            //arrange
+            var college = new College();
+            var courseName1 = "Intro to Fire";
+            var courseName2 = "Advanced Pyrotechnics";
+            string[] courseList = { courseName1, $"{courseName2}: {courseName1}" };
+
+            //act
+            college.AddCourses(courseList);
+            var course1 = college.Courses.SingleOrDefault(c => c.Name == courseName1);
+            var course2 = college.Courses.SingleOrDefault(c => c.Name == courseName2);
+
+            //assert
+            Assert.AreEqual(course1, course2?.Prerequisite);
+
+
+        }
     }
 }

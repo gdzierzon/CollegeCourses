@@ -21,8 +21,16 @@ namespace CollegeBusinessObjects
             foreach (var course in courses)
             {
                 var collegeCourse = new CollegeCourse(course);
+
+                if (collegeCourse.PrerequisteCourseName != null)
+                {
+                    collegeCourse.Prerequisite =
+                        Courses.SingleOrDefault(c => c.Name == collegeCourse.PrerequisteCourseName);
+                }
+
                 Courses.Add(collegeCourse);
             }
+            
         }
         public void Validate()
         {
