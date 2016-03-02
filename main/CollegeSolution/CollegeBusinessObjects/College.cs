@@ -18,6 +18,8 @@ namespace CollegeBusinessObjects
         {
             get
             {
+                if (Courses == null || Courses.Count == 0) return "There are no courses in the schedule.";
+
                 OrderedCourses.Clear();
                 var coursesToAdd = Courses.Where(c => !c.HasPrerequisite).OrderBy(c=>c.Name).ToList();
                 SortCourses(coursesToAdd);
@@ -53,6 +55,9 @@ namespace CollegeBusinessObjects
         {
             foreach (var course in courses)
             {
+                //do not try to add blank courses
+                if(course.Trim() == "") continue;
+
                 var collegeCourse = new CollegeCourse(course);
                 
                 Courses.Add(collegeCourse);

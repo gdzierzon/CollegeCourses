@@ -27,16 +27,20 @@ namespace CollegeUnitTests.BusinessObjectTests
         }
 
         [Test]
-        public void TestAddCoursesWithInvalidName()
+        public void TestAddCoursesWithBlankNames()
         {
 
             //arrange
             var college = new College();
-            string[] courseList = {"Intro to Fire", "  "};
+            var courseName1 = "Intro to Fire";
+            var courseName2 = "   ";
+            string[] courseList = { courseName1, courseName2 };
 
             //act
+            college.AddCourses(courseList);
+
             //assert
-            Assert.Throws<InvalidCourseNameException>(() => { college.AddCourses(courseList);});
+            Assert.AreEqual(courseName1, college.Schedule);
             
         }
 

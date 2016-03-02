@@ -40,6 +40,21 @@ namespace CollegeUnitTests.BusinessObjectTests
                 );
         }
 
+
+        [Test]
+        public void TestCreateCourseWithTooManyPrerequisites()
+        {
+            //arrange
+            var courseName = "Advanced Pyrotechnics: Intro to Fire: How to Start a Blaze";
+            ICollegeCourse collegeCourse;
+
+            //act
+            //assert
+            Assert.Throws<InvalidCourseNameException>(
+                () => { collegeCourse = new CollegeCourse(courseName); }
+                );
+        }
+
         [Test]
         public void TestCreateCouseWithPrerequisite()
         {

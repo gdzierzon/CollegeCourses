@@ -1,3 +1,6 @@
+using CollegeBusinessInterfaces;
+using CollegeBusinessObjects;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(CollegeWebApplication.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(CollegeWebApplication.App_Start.NinjectWebCommon), "Stop")]
 
@@ -45,6 +48,7 @@ namespace CollegeWebApplication.App_Start
                 kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
+
                 RegisterServices(kernel);
                 return kernel;
             }
@@ -61,6 +65,8 @@ namespace CollegeWebApplication.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<ICollegeCourse>().To<CollegeCourse>();
+            kernel.Bind<ICollege>().To<College>();
         }        
     }
 }

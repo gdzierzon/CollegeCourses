@@ -19,9 +19,9 @@ namespace CollegeBusinessObjects.Exceptions
             }
         }
 
-        public ICollegeCourse Course { get; set; }
+        public string Course { get; set; }
 
-        public InvalidCourseNameException(ICollegeCourse course)
+        public InvalidCourseNameException(string course)
         {
             Course = course;
         }

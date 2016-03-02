@@ -19,9 +19,10 @@ namespace CollegeBusinessObjects
         {
             var courseNames = course.Split(':');
             Name = courseNames[0].Trim();
-            if (Name == "")
+
+            if (courseNames.Length> 2 || Name == "")
             {
-                throw new InvalidCourseNameException(this);
+                throw new InvalidCourseNameException(course);
             }
 
             if (courseNames.Length > 1)
