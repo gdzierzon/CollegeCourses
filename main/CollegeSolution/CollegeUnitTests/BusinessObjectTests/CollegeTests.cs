@@ -99,6 +99,23 @@ namespace CollegeUnitTests.BusinessObjectTests
         }
 
         [Test]
+        public void TestAddCoursesWithoutCircularReference()
+        {
+
+            //arrange
+            var college = new College();
+            var courseName1 = "Course A";
+            var courseName2 = "Course B";
+            var courseName3 = "Course C";
+            string[] courseList = { $"{courseName1}", $"{courseName2}: {courseName1}", $"{courseName3}: {courseName2}" };
+
+            //act
+            //assert
+            Assert.DoesNotThrow(() => { college.AddCourses(courseList); });
+
+        }
+
+        [Test]
         public void TestAddCoursesWithCircularReference()
         {
 

@@ -71,26 +71,24 @@ namespace CollegeUnitTests.AcceptanceTests
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Courses to College", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
+#line 7
+ testRunner.Given("I am adding courses to a college", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "values"});
+                        "courseList",
+                        "schedule"});
             table1.AddRow(new string[] {
-                        "Course A,Course B: Course A"});
+                        @"Introduction to Paper Airplanes:,Advanced Throwing Techniques: Introduction to Paper Airplanes,History of Cubicle Siege Engines: Rubber Band Catapults 101,Advanced Office Warfare: History of Cubicle Siege Engines,Rubber Band Catapults 101: ,Paper Jet Engines: Introduction to Paper Airplanes",
+                        "Introduction to Paper Airplanes, Advanced Throwing Techniques, Paper Jet Engines," +
+                            " Rubber Band Catapults 101, History of Cubicle Siege Engines, Advanced Office Wa" +
+                            "rfare"});
             table1.AddRow(new string[] {
-                        "Course A,Course B: Course A,Course C: Course B"});
-#line 7
- testRunner.Given("I have added values to the college", ((string)(null)), table1, "Given ");
-#line 12
- testRunner.When("I press add", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
-                        "courses"});
-            table2.AddRow(new string[] {
-                        "Course A, Course B"});
-            table2.AddRow(new string[] {
-                        "Course A, Course B, Course C"});
-#line 13
- testRunner.Then("the result courses should be displayed", ((string)(null)), table2, "Then ");
+                        "Intro to Arguing on the Internet: Godwin’s Law, Understanding Circular Logic: Int" +
+                            "ro to Arguing on the Internet, Godwin’s Law: Understanding Circular Logic",
+                        "\'Understanding Circular Logic\' has a prerequisite course with a cirular reference" +
+                            "."});
+#line 8
+ testRunner.Then("the courseList list should display schedule", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

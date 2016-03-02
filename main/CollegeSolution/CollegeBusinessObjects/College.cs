@@ -88,6 +88,8 @@ namespace CollegeBusinessObjects
         {
             foreach (var course in Courses)
             {
+                //clear prerequisites before recursively checking for circular reference
+                PrerequisitesCourseList.Clear();
                 CheckForPrerequisiteCourse(course);
             }
         }
