@@ -19,19 +19,24 @@ namespace CollegeWebApplication.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.CourseList = _college.Schedule;
-            return View("IndexRazor",_college);
+            return View(_college);
         }
 
         [HttpPost]
         public ActionResult Index(string courses)
         {
-            string[] courseList = courses.Trim().Split(new string[] { ",", "\n"},StringSplitOptions.RemoveEmptyEntries);
-            _college.AddCourses(courseList);
+            try
+            {
 
-            ViewBag.CourseList = _college.Schedule;
+                string[] courseList = courses.Trim().Split(new string[] { ",", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                _college.AddCourses(courseList);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = ex.Message;
+            }
 
-            return View("IndexRazor", _college);
+            return View(_college);
         }
 
 

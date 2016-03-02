@@ -12,7 +12,7 @@ using NUnit.Framework;
 namespace CollegeUnitTests.WebUITests
 {
     [TestFixture]
-    public class MvcHomeControllerTests
+    public class WebApiCollegeCoursesControllerTests
     {
         [Test]
         public void TestAddCoursesSuccess()
@@ -24,18 +24,13 @@ namespace CollegeUnitTests.WebUITests
 
             var expectedSchedule = "Intro to Fire, Advanced Pyrotechnics";
 
-            var mvcController = new HomeController(new College());
+            var webApiController = new CollegeCourseController(new College());
 
             //act
-            var result = mvcController.Index(coursesBuilder.ToString()) as ViewResult;
+            var result = webApiController.Post(coursesBuilder.ToString());
 
             //assert
-            Assert.NotNull(result,"result != null");
-
-            var college = result.Model as ICollege;
-            Assert.NotNull(college,"college != null");
-
-            Assert.AreEqual(expectedSchedule, college.Schedule);
+            Assert.AreEqual(expectedSchedule, result);
         }
 
         [Test]
@@ -46,18 +41,13 @@ namespace CollegeUnitTests.WebUITests
 
             var expectedSchedule = "There are no courses in the schedule.";
 
-            var mvcController = new HomeController(new College());
+            var webApiController = new CollegeCourseController(new College());
 
             //act
-            var result = mvcController.Index(coursesList) as ViewResult;
+            var result = webApiController.Post(coursesList);
 
             //assert
-            Assert.NotNull(result, "result != null");
-
-            var college = result.Model as ICollege;
-            Assert.NotNull(college, "college != null");
-
-            Assert.AreEqual(expectedSchedule, college.Schedule);
+            Assert.AreEqual(expectedSchedule, result);
         }
 
         [Test]
@@ -66,24 +56,18 @@ namespace CollegeUnitTests.WebUITests
             //arrange
             var coursesBuilder = new StringBuilder();
             coursesBuilder.Append("Intro to Fire\n");
-            coursesBuilder.Append("\n");
             coursesBuilder.Append("   \n");
             coursesBuilder.Append("Advanced Pyrotechnics: Intro to Fire\n");
 
             var expectedSchedule = "Intro to Fire, Advanced Pyrotechnics";
 
-            var mvcController = new HomeController(new College());
+            var webApiController = new CollegeCourseController(new College());
 
             //act
-            var result = mvcController.Index(coursesBuilder.ToString()) as ViewResult;
+            var result = webApiController.Post(coursesBuilder.ToString());
 
             //assert
-            Assert.NotNull(result, "result != null");
-
-            var college = result.Model as ICollege;
-            Assert.NotNull(college, "college != null");
-
-            Assert.AreEqual(expectedSchedule, college.Schedule);
+            Assert.AreEqual(expectedSchedule, result);
         }
 
         [Test]
@@ -96,18 +80,13 @@ namespace CollegeUnitTests.WebUITests
 
             var expectedSchedule = "'Advanced Pyrotechnics' has a prerequisite course with a cirular reference.";
 
-            var mvcController = new HomeController(new College());
+            var webApiController = new CollegeCourseController(new College());
 
             //act
-            var result = mvcController.Index(coursesBuilder.ToString()) as ViewResult;
+            var result = webApiController.Post(coursesBuilder.ToString());
 
             //assert
-            Assert.NotNull(result, "result != null");
-
-            string errorMessage = result.ViewBag.ErrorMessage;
-
-            Assert.AreEqual(expectedSchedule, errorMessage);
-            
+            Assert.AreEqual(expectedSchedule, result);
         }
 
         [Test]
@@ -120,17 +99,13 @@ namespace CollegeUnitTests.WebUITests
 
             var expectedSchedule = "The course name \"Advanced Pyrotechnics: Intro to Fire: How to Build a Blaze\" is invalid.";
 
-            var mvcController = new HomeController(new College());
+            var webApiController = new CollegeCourseController(new College());
 
             //act
-            var result = mvcController.Index(coursesBuilder.ToString()) as ViewResult;
+            var result = webApiController.Post(coursesBuilder.ToString());
 
             //assert
-            Assert.NotNull(result, "result != null");
-
-            string errorMessage = result.ViewBag.ErrorMessage;
-
-            Assert.AreEqual(expectedSchedule, errorMessage);
+            Assert.AreEqual(expectedSchedule, result);
         }
     }
 }

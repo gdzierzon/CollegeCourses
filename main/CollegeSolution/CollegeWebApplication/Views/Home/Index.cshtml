@@ -42,7 +42,14 @@
             <legend>Course Schedule</legend>
 
             <div class="col-lg-12">
-                @Model.Schedule
+                @if (ViewBag.ErrorMessage == null)
+                {
+                    <div class="alert alert-info">@Model.Schedule</div>
+                }
+                else
+                {
+                    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+                }
             </div>
         </fieldset>
     </div>

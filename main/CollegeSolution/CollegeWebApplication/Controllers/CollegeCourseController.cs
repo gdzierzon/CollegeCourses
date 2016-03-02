@@ -17,32 +17,23 @@ namespace CollegeWebApplication.Controllers
             _college = college;
         }
 
-        // GET: api/CollegeCourse
-        public string Get()
-        {
-            return "this is a GET test";
-        }
-
-        // GET: api/CollegeCourse/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+       
         // POST: api/CollegeCourse
         public string Post([FromBody]string courses)
         {
-            return "This is a POST test";
-        }
+            try
+            {
+                string[] courseList = courses.Trim().Split(new string[] { ",", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                _college.AddCourses(courseList);
 
-        // PUT: api/CollegeCourse/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+                return _college.Schedule;
+            }
+            catch (Exception ex)
+            {
 
-        // DELETE: api/CollegeCourse/5
-        public void Delete(int id)
-        {
+                return ex.Message;
+            }
         }
+        
     }
 }
