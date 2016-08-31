@@ -1,0 +1,5 @@
+E:\dev\CollegeCourses\main\CollegeSolution\CollegeBusinessInterfaces\bin\Debug\CollegeBusinessInterfaces.dll
+E:\dev\CollegeCourses\main\CollegeSolution\CollegeBusinessInterfaces\bin\Debug\CollegeBusinessInterfaces.pdb
+E:\dev\CollegeCourses\main\CollegeSolution\CollegeBusinessInterfaces\obj\Debug\CollegeBusinessInterfaces.csprojResolveAssemblyReference.cache
+E:\dev\CollegeCourses\main\CollegeSolution\CollegeBusinessInterfaces\obj\Debug\CollegeBusinessInterfaces.dll
+E:\dev\CollegeCourses\main\CollegeSolution\CollegeBusinessInterfaces\obj\Debug\CollegeBusinessInterfaces.pdb

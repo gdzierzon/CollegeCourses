@@ -31,8 +31,8 @@ namespace CollegeUnitTests.AcceptanceTests
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddCourses", "\tIn order to add courses\r\n\tAs a university administrator\r\n\tI want to be shown a s" +
-                    "equential list of courses", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "AddCourses", "\tIn order to verify courses that I have added\r\n\tAs a university administrator\r\n\tI" +
+                    " want to be shown a sequential list of my courses", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -85,8 +85,8 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Intro to Arguing on the Internet: Godwin’s Law, Understanding Circular Logic: Int" +
                             "ro to Arguing on the Internet, Godwin’s Law: Understanding Circular Logic",
-                        "\'Understanding Circular Logic\' has a prerequisite course with a cirular reference" +
-                            "."});
+                        "\'Understanding Circular Logic\' has a prerequisite course with a circular referenc" +
+                            "e."});
 #line 8
  testRunner.Then("the courseList list should display schedule", ((string)(null)), table1, "Then ");
 #line hidden

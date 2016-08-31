@@ -168,8 +168,7 @@ namespace CollegeUnitTests.BusinessObjectTests
             //assert
             Assert.AreEqual(expectedSchedule, college.Schedule);
         }
-
-
+        
         [Test]
         public void TestDisplayScheduleWithMultipleCourses()
         {
