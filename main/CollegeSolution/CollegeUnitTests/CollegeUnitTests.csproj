@@ -77,9 +77,21 @@
       <DependentUpon>AddCourses.feature</DependentUpon>
     </Compile>
     <Compile Include="AcceptanceTests\AddCoursesSteps.cs" />
+    <Compile Include="AcceptanceTests\LoginOneUser.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoginOneUser.feature</DependentUpon>
+    </Compile>
+    <Compile Include="AcceptanceTests\LoginOneUserSteps.cs" />
+    <Compile Include="AcceptanceTests\UserLoginMulti.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserLoginMulti.feature</DependentUpon>
+    </Compile>
     <Compile Include="BusinessObjectTests\CollegeCourseTests.cs" />
     <Compile Include="BusinessObjectTests\CollegeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AcceptanceTests\UserLoginMultiSteps.cs" />
     <Compile Include="WebUITests\MvcHomeControllerTests.cs" />
     <Compile Include="WebUITests\WebApiCollegeCoursesControllerTests.cs" />
   </ItemGroup>
@@ -87,6 +99,14 @@
     <None Include="AcceptanceTests\AddCourses.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>AddCourses.feature.cs</LastGenOutput>
+    </None>
+    <None Include="AcceptanceTests\LoginOneUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>LoginOneUser.feature.cs</LastGenOutput>
+    </None>
+    <None Include="AcceptanceTests\UserLoginMulti.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>UserLoginMulti.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
